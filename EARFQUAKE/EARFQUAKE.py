@@ -479,53 +479,53 @@ elif st.session_state.page_selection == "eda":
 elif st.session_state.page_selection == "data_cleaning":
     st.header("🧼 Data Cleaning and Data Pre-processing")
 
-#code
+    # Assuming the 'df' DataFrame is already loaded or available
     st.dataframe(df.head(), use_container_width=True, hide_index=True)
 
+    # Create a new 'Risk' column based on some logic or assumptions
+    # For the sake of this example, we'll randomly assign risk levels
+    df['Risk'] = np.random.choice(['Low Risk', 'Medium Risk', 'High Risk'], size=len(df))
+
+    # Initialize the LabelEncoder
     encoder = LabelEncoder()
 
-    df['tsunami_encoded'] = encoder.fit_transform(df['tsunami'])
+    # Encode the 'Risk' column with specific mapping: 
+    # 'Low Risk' -> 0, 'Medium Risk' -> 1, 'High Risk' -> 2
+    df['Risk_encoded'] = df['Risk'].map({'Low Risk': 0, 'Medium Risk': 1, 'High Risk': 2})
 
+    # Display the encoded DataFrame
     st.dataframe(df.head(), use_container_width=True, hide_index=True)
 
+    # Mapping of the risk levels and their encoded equivalents
+    unique_risk = df['Risk'].unique()
+    unique_risk_encoded = df['Risk_encoded'].unique()
 
-    # Mapping of the Iris species and their encoded equivalent
+    # Create a new DataFrame for the mapping
+    risk_mapping_df = pd.DataFrame({'Risk': unique_risk, 'Risk Encoded': unique_risk_encoded})
 
-    unique_tsunami = df['tsunami'].unique()
-    unique_tsunami_encoded = df['tsunami_encoded'].unique()
-
-    # Create a new DataFrame
-    tsunami_mapping_df = pd.DataFrame({'Tsunami': unique_tsunami, 'Tsunami Encoded': unique_tsunami_encoded})
-
-    # Display the DataFrame
-    st.dataframe(tsunami_mapping_df, use_container_width=True, hide_index=True)
+    # Display the mapping
+    st.dataframe(risk_mapping_df, use_container_width=True, hide_index=True)
 
     st.subheader("Train-Test Split")
 
     # Select features and target variable
-    features = ['magnitude', 'type', 'alert', 'status']
+    features = ['magnitude', 'depth', 'latitude', 'longitude', 'tsunami']
     X = df[features]
-    y = df['tsunami_encoded']
+    y = df['Risk_encoded']  # Target variable is now 'Risk_encoded'
 
     st.code("""
-
     # Select features and target variable
-    features = ['magnitude', 'type', 'alert', 'status']
+    features = ['magnitude', 'depth', 'latitude', 'longitude', 'tsunami']
     X = df[features]
-    y = df['tsunami_encoded']
-
-            
+    y = df['Risk_encoded']
     """)
 
-
     # Split the dataset into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
     st.code("""
-
     # Split the dataset into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-                
     """)
 
     st.subheader("X_train")
@@ -539,6 +539,7 @@ elif st.session_state.page_selection == "data_cleaning":
 
     st.subheader("y_test")
     st.dataframe(y_test, use_container_width=True, hide_index=True)
+
 
 
 # Machine Learning Page
