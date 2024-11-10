@@ -572,7 +572,7 @@ elif st.session_state.page_selection == "machine_learning":
     r2 = r2_score(y_test, y_pred)
     mae = mean_absolute_error(y_test, y_pred)
 
-    st.markdown('## Actual vs. Predicted Magnitude Plot')
+    st.markdown("<h3 style='text-align: center; color: #4CAF50;'>Actual vs. Predicted Magnitude Plot", unsafe_allow_html=True)
     st.markdown('#### Model Evaluation')
     with st.expander(f"**Mean Squared Error (MSE): `{mse:.4f}`**"):
         st.write("""   
@@ -604,6 +604,7 @@ elif st.session_state.page_selection == "machine_learning":
     # Display the plot in Streamlit
     st.pyplot(plt)
 
+    st.markdown("---")
     # Random Forest Classifier to Predict Tsunami
     from sklearn.ensemble import RandomForestClassifier
     from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
@@ -626,7 +627,7 @@ elif st.session_state.page_selection == "machine_learning":
     accuracy = accuracy_score(y_class_test, y_class_pred)
     class_report = classification_report(y_class_test, y_class_pred)
 
-    st.markdown('## Random Forest Classifier to Predict Tsunami')
+    st.markdown("<h3 style='text-align: center; color: #4CAF50;'>Random Forest Classifier to Predict Tsunami", unsafe_allow_html=True)
     st.markdown('### Tsunami Prediction Model Evaluation')
     with st.expander(f"**Accuracy: `{accuracy:.4f}`**"):
         st.write("   - `Accuracy` indicates the proportion of correct predictions out of the total predictions.\n")
@@ -644,7 +645,7 @@ elif st.session_state.page_selection == "machine_learning":
     # Display the confusion matrix in Streamlit
     st.pyplot(plt)
 
-    
+    st.markdown("---")
     # K-Nearest Neighbors Classifier for Alert Prediction
     from sklearn.neighbors import KNeighborsClassifier
     from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
@@ -673,7 +674,7 @@ elif st.session_state.page_selection == "machine_learning":
     alert_accuracy = accuracy_score(y_alert_test, y_alert_pred)
     alert_report = classification_report(y_alert_test, y_alert_pred, target_names=le.classes_)
 
-    st.markdown('## K-Nearest Neighbors Classifier for Alert Prediction')
+    st.markdown("<h3 style='text-align: center; color: #4CAF50;'>K-Nearest Neighbors Classifier for Alert Prediction", unsafe_allow_html=True)
     st.markdown('#### Alert Prediction Model Evaluation')
     with st.expander(f"**Accuracy: `{alert_accuracy:.4f}`**"):
         st.write("   - `Accuracy` indicates the proportion of correct predictions out of the total predictions.\n")
@@ -691,6 +692,7 @@ elif st.session_state.page_selection == "machine_learning":
     # Display the confusion matrix in Streamlit
     st.pyplot(plt)
 
+    st.markdown("---")
     # Means Clustering to Find Patterns
     from sklearn.cluster import KMeans
     import matplotlib.pyplot as plt
@@ -706,7 +708,7 @@ elif st.session_state.page_selection == "machine_learning":
     data_clustering_with_clusters = data_clustering.copy()
     data_clustering_with_clusters["Cluster"] = clusters
 
-    st.markdown('## Means Clustering to Find Patterns')
+    st.markdown("<h3 style='text-align: center; color: #4CAF50;'>Means Clustering to Find Patterns", unsafe_allow_html=True)
     # Plotting the clusters
     plt.figure(figsize=(10, 6))
     plt.scatter(data_clustering_with_clusters["latitude"], data_clustering_with_clusters["longitude"], 
@@ -719,7 +721,7 @@ elif st.session_state.page_selection == "machine_learning":
     # Display the plot in Streamlit
     st.pyplot(plt)
 
-
+    st.markdown("---")
     # Principal Component Analysis (PCA) for Dimensionality Reduction
     from sklearn.decomposition import PCA
     import matplotlib.pyplot as plt
@@ -738,7 +740,7 @@ elif st.session_state.page_selection == "machine_learning":
     cumulative_variance = explained_variance.cumsum()
 
     # Display the results in Streamlit
-    st.markdown('## Principal Component Analysis (PCA) for Dimensionality Reduction')
+    st.markdown("<h3 style='text-align: center; color: #4CAF50;'>Principal Component Analysis (PCA) for Dimensionality Reduction", unsafe_allow_html=True)
     st.markdown('#### PCA Evaluation')
     with st.expander("**Explained Variance Ratio for each Principal Component:**"):
         for i, var in enumerate(explained_variance, 1):
