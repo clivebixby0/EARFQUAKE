@@ -574,17 +574,23 @@ elif st.session_state.page_selection == "machine_learning":
 
     st.markdown('## Actual vs. Predicted Magnitude Plot')
     st.markdown('#### Model Evaluation')
-    st.write(f"1. **Mean Squared Error (MSE): {mse:.4f}**")
-    st.write("   - `MSE` represents the average squared difference between actual and predicted magnitudes.")
-    st.write("   - A `lower MSE` indicates better performance.\n")
+    with st.expander(f"**Mean Squared Error (MSE): `{mse:.4f}`**"):
+        st.write("""   
+            - `MSE` represents the average squared difference between actual and predicted magnitudes.\n
+            - A `lower MSE` indicates better performance.\n
+        """)
 
-    st.write(f"2. **R² Score: {r2:.4f}**")
-    st.write("   - `R²` measures the proportion of the variance in the target variable explained by the model.")
-    st.write("   - R² ranges from `0 to 1`, where 1 indicates perfect predictions.\n")
+    with st.expander(f"**R² Score: `{r2:.4f}`**"):
+        st.write("""   
+            - `R²` measures the proportion of the variance in the target variable explained by the model.
+            - R² ranges from `0 to 1`, where 1 indicates perfect predictions.\n
+        """)
 
-    st.write(f"3. **Mean Absolute Error (MAE): {mae:.4f}**")
-    st.write("   - `MAE` represents the average absolute difference between actual and predicted magnitudes.")
-    st.write("   - Like MSE, a `lower MAE` indicates better performance.\n")
+    with st.expander(f"**Mean Absolute Error (MAE): `{mae:.4f}`**"):
+        st.write("""   
+            - `MAE` represents the average absolute difference between actual and predicted magnitudes.
+            - Like MSE, a `lower MAE` indicates better performance.\n
+        """)
 
     # Visualizing the Actual vs Predicted values
     plt.figure(figsize=(10, 6))
@@ -622,10 +628,10 @@ elif st.session_state.page_selection == "machine_learning":
 
     st.markdown('## Random Forest Classifier to Predict Tsunami')
     st.markdown('### Tsunami Prediction Model Evaluation')
-    st.write(f"1. **Accuracy: {accuracy:.4f}**")
-    st.write("   - `Accuracy` indicates the proportion of correct predictions out of the total predictions.\n")
-    st.write("**2. Classification Report:**")
-    st.text(class_report)
+    with st.expander(f"**Accuracy: `{accuracy:.4f}`**"):
+        st.write("   - `Accuracy` indicates the proportion of correct predictions out of the total predictions.\n")
+    with st.expander("**Classification Report:**"):
+        st.text(class_report)
 
     # Confusion Matrix Visualization
     conf_matrix = confusion_matrix(y_class_test, y_class_pred)
@@ -669,10 +675,10 @@ elif st.session_state.page_selection == "machine_learning":
 
     st.markdown('## K-Nearest Neighbors Classifier for Alert Prediction')
     st.markdown('#### Alert Prediction Model Evaluation')
-    st.write(f"**1. Accuracy: {alert_accuracy:.4f}**")
-    st.write("   - `Accuracy` indicates the proportion of correct predictions out of the total predictions.\n")
-    st.write("**2. Classification Report:**")
-    st.text(alert_report)
+    with st.expander(f"**Accuracy: `{alert_accuracy:.4f}`**"):
+        st.write("   - `Accuracy` indicates the proportion of correct predictions out of the total predictions.\n")
+    with st.expander("**Classification Report:**"):
+        st.text(alert_report)
 
     # Confusion Matrix Visualization
     conf_matrix_alert = confusion_matrix(y_alert_test, y_alert_pred)
@@ -734,12 +740,12 @@ elif st.session_state.page_selection == "machine_learning":
     # Display the results in Streamlit
     st.markdown('## Principal Component Analysis (PCA) for Dimensionality Reduction')
     st.markdown('#### PCA Evaluation')
-    st.write("Explained Variance Ratio for each `Principal Component`:")
-    for i, var in enumerate(explained_variance, 1):
-        st.write(f"  **Principal Component {i}: {var:.4f}**")
+    with st.expander("**Explained Variance Ratio for each Principal Component:**"):
+        for i, var in enumerate(explained_variance, 1):
+            st.write(f"  **Principal Component {i}: `{var:.4f}`**")
 
-    st.write(f"\n**Cumulative Explained Variance for the first 2 components: {cumulative_variance[1]:.4f}**")
-    st.write("   - Measures how much of the `total variance` is retained by the first two components.\n")
+    with st.expander(f"\n**Cumulative Explained Variance for the first 2 components: `{cumulative_variance[1]:.4f}`**"):
+        st.write("   - Measures how much of the `total variance` is retained by the first two components.\n")
 
     # Visualizing PCA results
     plt.figure(figsize=(10, 6))
