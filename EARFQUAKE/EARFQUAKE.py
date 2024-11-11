@@ -16,7 +16,7 @@ from sklearn.preprocessing import LabelEncoder
 #######################
 # Page configuration
 st.set_page_config(
-    page_title="EARFQUAKE Analysis",  # Updated Project Title
+    page_title="Earthquake Data Analysis Tool",  # Updated Project Title
     page_icon="🌍",  # Updated with an Earth emoji
     layout="wide",
     initial_sidebar_state="expanded"
@@ -37,7 +37,7 @@ def set_page_selection(page):
 # Sidebar
 with st.sidebar:
     # Sidebar Title
-    st.title('EARFQUAKE')
+    st.title('Earthquake Data Analysis Tool 🌍')
 
     # Page Button Navigation
     st.subheader("Pages")
