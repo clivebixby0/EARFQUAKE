@@ -475,8 +475,80 @@ elif st.session_state.page_selection == "eda":
              """)
 
 
+
 # Data Cleaning Page
 elif st.session_state.page_selection == "data_cleaning":
+    st.header("🧼 Data Cleaning and Data Pre-processing")
+
+    # Assuming the 'df' DataFrame is already loaded or available
+    st.dataframe(df.head(), use_container_width=True, hide_index=True)
+
+    # Define risk levels based on specific criteria
+    def assign_risk(row):
+        if row['magnitude'] >= 7.0 or row['depth'] <= 10:
+            return 'High Risk'
+        elif 5.0 <= row['magnitude'] < 7.0 or 10 < row['depth'] <= 70:
+            return 'Medium Risk'
+        else:
+            return 'Low Risk'
+
+    # Apply the risk function to each row
+    df['Risk'] = df.apply(assign_risk, axis=1)
+
+    # Initialize the LabelEncoder
+    encoder = LabelEncoder()
+
+    # Encode the 'Risk' column with specific mapping:
+    # 'Low Risk' -> 0, 'Medium Risk' -> 1, 'High Risk' -> 2
+    df['Risk_encoded'] = df['Risk'].map({'Low Risk': 0, 'Medium Risk': 1, 'High Risk': 2})
+
+    # Display the encoded DataFrame
+    st.dataframe(df.head(), use_container_width=True, hide_index=True)
+
+    # Mapping of the risk levels and their encoded equivalents
+    unique_risk = df['Risk'].unique()
+    unique_risk_encoded = df['Risk_encoded'].unique()
+
+    # Create a new DataFrame for the mapping
+    risk_mapping_df = pd.DataFrame({'Risk': unique_risk, 'Risk Encoded': unique_risk_encoded})
+
+    # Display the mapping
+    st.dataframe(risk_mapping_df, use_container_width=True, hide_index=True)
+
+    st.subheader("Train-Test Split")
+
+    # Select features and target variable
+    features = ['magnitude', 'depth', 'latitude', 'longitude', 'tsunami']
+    X = df[features]
+    y = df['Risk_encoded']  # Target variable is now 'Risk_encoded'
+
+    st.code("""
+    # Select features and target variable
+    features = ['magnitude', 'depth', 'latitude', 'longitude', 'tsunami']
+    X = df[features]
+    y = df['Risk_encoded']
+    """)
+
+    # Split the dataset into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+    st.code("""
+    # Split the dataset into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+    """)
+
+    st.subheader("X_train")
+    st.dataframe(X_train, use_container_width=True, hide_index=True)
+
+    st.subheader("X_test")
+    st.dataframe(X_test, use_container_width=True, hide_index=True)
+
+    st.subheader("y_train")
+    st.dataframe(y_train, use_container_width=True, hide_index=True)
+
+    st.subheader("y_test")
+    st.dataframe(y_test, use_container_width=True, hide_index=True)
+
     st.header("🧼 Data Cleaning and Data Pre-processing")
 
     # Assuming the 'df' DataFrame is already loaded or available
