@@ -21,3 +21,11 @@ The Eartquake Data Analysis Tool is a Streamlit web application designed to perf
 * 🌐 [Streamlit Link](https://earfquake-atjsxhtyuvwrcjwyfbjyx2.streamlit.app)
 * 📗 [Google Colab Notebook](https://colab.research.google.com/drive/1fqo1CAWVw0KW-BDNPa6OpRO5MfBTDSc7?usp=sharing)
 * 📊 Dataset: [Global Earthquake Data](https://www.kaggle.com/datasets/shreyasur965/recent-earthquakes)
+
+## 📖 Pages:
+* `Dataset` - Brief description of the Global Earthquake dataset used in this dashboard, including key features such as magnitude, depth, location, and more.
+* `EDA` - Exploratory Data Analysis of the earthquake dataset, highlighting distributions and relationships between features. Includes visualizations such as density plots, scatter plots, and violin plots.
+* `Data Cleaning / Pre-processing` - Steps for cleaning and preprocessing the dataset, including encoding categorical variables and splitting the data into training and testing sets.
+* `Machine Learning` - Training of various supervised models, including Linear Regression and Random Forest Classifier, to predict earthquake magnitudes and tsunami occurrences. Includes model evaluation metrics and feature importance analysis.
+* `Prediction` - A prediction page where users can input values to predict earthquake risk levels based on the trained models.
+* `Conclusion` - Summary of insights and observations from the EDA and model training.
