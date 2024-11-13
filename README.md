@@ -3,7 +3,7 @@ CSS145 [INTRODUCTION TO DATA SCIENCE]
 
 FINAL PROJECT
 
-Group Members:
+## Group Members:
 
 * AGUAS, Yñikko Arzee Neo D. - flatearther666
 * ALMANDRES, Villy Joel H. - Tataroos
@@ -15,7 +15,7 @@ The Eartquake Data Analysis Tool is a Streamlit web application designed to perf
 
 ![image](https://github.com/user-attachments/assets/eca7d3ed-9a05-473d-8091-ac1d63f90245)
 
-🔗 Links:
+## 🔗 Links:
 
 * 🌐 [Streamlit Link]([url](https://earfquake-atjsxhtyuvwrcjwyfbjyx2.streamlit.app))
 * 📗 [Google Colab Notebook]([url](https://colab.research.google.com/drive/1fqo1CAWVw0KW-BDNPa6OpRO5MfBTDSc7?usp=sharing))
