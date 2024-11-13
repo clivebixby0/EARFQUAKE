@@ -483,7 +483,6 @@ elif st.session_state.page_selection == "data_cleaning":
     st.dataframe(df.head(), use_container_width=True, hide_index=True)
 
     # Create a new 'Risk' column based on some logic or assumptions
-    # For the sake of this example, we'll randomly assign risk levels
     df['Risk'] = np.random.choice(['Low Risk', 'Medium Risk', 'High Risk'], size=len(df))
 
     # Initialize the LabelEncoder
@@ -546,7 +545,7 @@ elif st.session_state.page_selection == "data_cleaning":
 elif st.session_state.page_selection == "machine_learning":
     st.header("🤖 Machine Learning")
 
-    # Add your machine learning code here
+    
 #Actual vs. Predicted Magnitude Plot
     import streamlit as st
     import matplotlib.pyplot as plt
