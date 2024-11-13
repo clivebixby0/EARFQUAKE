@@ -17,6 +17,6 @@ The Eartquake Data Analysis Tool is a Streamlit web application designed to perf
 
 ## 🔗 Links:
 
-* 🌐 [Streamlit Link]([https://earfquake-atjsxhtyuvwrcjwyfbjyx2.streamlit.app])
+* 🌐 [Streamlit Link](https://earfquake-atjsxhtyuvwrcjwyfbjyx2.streamlit.app)
 * 📗 [Google Colab Notebook]((https://colab.research.google.com/drive/1fqo1CAWVw0KW-BDNPa6OpRO5MfBTDSc7?usp=sharing))
 * 📊 Dataset: [Global Earthquake Data]((https://www.kaggle.com/datasets/shreyasur965/recent-earthquakes))
